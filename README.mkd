@@ -1,0 +1,15 @@
+#Vim Java unused imports#
+Author: [akhaku](http://akhaku.com)
+
+A simple vim plugin to show unused imports in a java file. Built for purely
+selfish reasons, open-sourced to help others.
+
+This is my first dabble im Vim scripting, so feedback is welcome.
+
+## Usage ##
+:so unused-imports.vim
+
+## TODO ##
+Functions, commands etc
+
+This software is provided as-is, with any warranty whatsoever.
