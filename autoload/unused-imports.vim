@@ -26,7 +26,6 @@ let s:matches_so_far = []
 function! s:highlight_unused_imports()
   let linenr = 0 
   :highlight unusedimport ctermbg=darkred guibg=darkred
-  echom filetype
   while linenr < line("$") 
     let linenr += 1
     let line = getline(linenr) 
