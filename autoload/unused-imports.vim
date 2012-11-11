@@ -11,6 +11,11 @@
 "
 " ============================================================================
 
+if exists('g:loaded_unused_imports')
+  finish
+endif
+let g:loaded_unused_imports = '0.1'
+
 if v:version < 700
     echoerr "unused-imports: this plugin requires vim >= 7."
     finish

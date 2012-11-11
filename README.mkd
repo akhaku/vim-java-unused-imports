@@ -7,9 +7,12 @@ selfish reasons, open-sourced to help others.
 This is my first dabble im Vim scripting, so feedback is welcome.
 
 ## Usage ##
-1. Move unused-imports.vim in autoload/unused-imports.vim
-2. Call :UnusedImports to highlight all unused imports.
-3. Call :UnusedImportsReset to remove the highlighting
+This plugin works with [pathogen](https://github.com/tpope/vim-pathogen). Simply
+clone this repository to a subfolder within bundle/
+
+In normal mode:
+:UnusedImports to highlight all unused imports.
+:UnusedImportsReset to remove the highlighting
 
 ## TODO ##
 Clear all unused imports automagically.
