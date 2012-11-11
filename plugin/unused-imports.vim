@@ -8,6 +8,7 @@
 " Installation: Install this file as autoload/unused-imports.vim
 " Usage:        :UnusedImports will highlight the unused imports
 "               :UnusedImportsReset will clear the hightlights
+"               :UnusedImportsRemove will remove all unused imports
 "
 " ============================================================================
 
@@ -23,7 +24,7 @@ endif
 
 let s:matches_so_far = []
 
-function! s:highlight_unused_imports()
+function! s:highlight_unused_imports(remove)
   let linenr = 0 
   :highlight unusedimport ctermbg=darkred guibg=darkred
   while linenr < line("$") 
@@ -35,7 +36,11 @@ function! s:highlight_unused_imports()
       let searchStr = '\.\@<!\<' . s . '\>'
       let linefound = search(searchStr, 'nw')
       if linefound == 0
-        call add(s:matches_so_far, matchadd('unusedimport', line))
+        if a:remove
+          :exec linenr . 'd _'
+        else
+          call add(s:matches_so_far, matchadd('unusedimport', line))
+        endif
       endif
     endif
   endwhile 
@@ -47,5 +52,6 @@ function! s:reset_unused_highlights()
   endfor
 endfunction
 
-command! UnusedImports call s:highlight_unused_imports()
+command! UnusedImports call s:highlight_unused_imports(0)
+command! UnusedImportsRemove call s:highlight_unused_imports(1)
 command! UnusedImportsReset call s:reset_unused_highlights()
