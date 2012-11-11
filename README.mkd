@@ -7,9 +7,11 @@ selfish reasons, open-sourced to help others.
 This is my first dabble im Vim scripting, so feedback is welcome.
 
 ## Usage ##
-:so unused-imports.vim
+1. Move unused-imports.vim in autoload/unused-imports.vim
+2. Call :UnusedImports to highlight all unused imports.
+3. Call :UnusedImportsReset to remove the highlighting
 
 ## TODO ##
-Functions, commands etc
+Clear all unused imports automagically.
 
 This software is provided as-is, with any warranty whatsoever.
