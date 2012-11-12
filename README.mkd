@@ -16,4 +16,4 @@ In normal mode:
 :UnusedImportsReset " remove the highlighting
 :UnusedImportsReset " remove all unused imports
 
-This software is provided as-is, with any warranty whatsoever.
+This software is provided as-is, without any warranty whatsoever.
