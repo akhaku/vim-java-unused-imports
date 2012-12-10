@@ -17,3 +17,6 @@ In normal mode:
 :UnusedImportsReset " remove all unused imports
 
 This software is provided as-is, without any warranty whatsoever.
+
+Recent changes:
+12/9: Ignores references to unused imports in single line comments

@@ -2,10 +2,10 @@
 " File:         unsued-imports.vim
 " Description:  vim script to highlight java unused imports
 " Maintainer:   Ammar Khaku <ammar.khaku at gmail dot com>
-" Last Change:  11 Nov, 2012
+" Last Change:  9 Dev, 2012
 " License:      This program is free software. It comes without any warranty,
-"               to the extent permitted by applicable law."
-" Installation: Install this file as autoload/unused-imports.vim
+"               to the extent permitted by applicable law.
+" Installation: Install this file as plugin/unused-imports.vim
 " Usage:        :UnusedImports will highlight the unused imports
 "               :UnusedImportsReset will clear the hightlights
 "               :UnusedImportsRemove will remove all unused imports
@@ -33,7 +33,7 @@ function! s:highlight_unused_imports(remove)
     let lis = matchlist(line, 'import \(\w\+\.\)\+\(\w\+\);')
     if len(lis) > 0
       let s = lis[2]
-      let searchStr = '\.\@<!\<' . s . '\>'
+      let searchStr = '\(\/\/.*\)\@<!\.\@<!\<' . s . '\>'
       let linefound = search(searchStr, 'nw')
       if linefound == 0
         if a:remove
