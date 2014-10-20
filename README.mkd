@@ -12,9 +12,10 @@ clone this repository to a subfolder within bundle/. Alternatively, copy
 unused-imports.vim to plugin/
 
 In normal mode:
-:UnusedImports " highlight all unused imports
-:UnusedImportsReset " clear the highlights
-:UnusedImportsRemove " remove all unused imports
+
+    :UnusedImports " highlight all unused imports
+    :UnusedImportsReset " clear the highlights
+    :UnusedImportsRemove " remove all unused imports
 
 This software is provided as-is, without any warranty whatsoever.
 
