@@ -25,6 +25,7 @@ endif
 let s:matches_so_far = []
 
 function! s:highlight_unused_imports(remove)
+  call s:reset_unused_highlights()
   let linenr = 0
   :highlight unusedimport ctermbg=darkred guibg=darkred
   while linenr < line("$")
