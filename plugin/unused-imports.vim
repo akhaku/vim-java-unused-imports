@@ -2,7 +2,7 @@
 " File:         unsued-imports.vim
 " Description:  vim script to highlight java unused imports
 " Maintainer:   Ammar Khaku <ammar.khaku at gmail dot com>
-" Last Change:  25 Jul, 2014
+" Last Change:  28 Jun, 2015
 " License:      This program is free software. It comes without any warranty,
 "               to the extent permitted by applicable law.
 " Installation: Install this file as plugin/unused-imports.vim
