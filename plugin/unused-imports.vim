@@ -34,7 +34,7 @@ function! s:highlight_unused_imports(remove)
     let lis = matchlist(line, '\vimport\s+(\w+\.)+(\w+);')
     if len(lis) > 0
       let s = lis[2]
-      let searchStr = '\v(//.*)@<!\.@<!<' . s . '>'
+      let searchStr = '\v(//.*)@<!(import\s+.*)@<!<' . s . '>'
       let linefound = search(searchStr, 'nw')
       if linefound == 0
         if a:remove
