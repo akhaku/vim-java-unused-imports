@@ -27,7 +27,7 @@ let s:matches_so_far = []
 function! s:highlight_unused_imports(remove)
   call s:reset_unused_highlights()
   let linenr = 0
-  :highlight unusedimport ctermbg=darkred guibg=darkred
+  highlight unusedimport ctermbg=darkred guibg=darkred
   while linenr < line("$")
     let linenr += 1
     let line = getline(linenr)
@@ -38,7 +38,7 @@ function! s:highlight_unused_imports(remove)
       let linefound = search(searchStr, 'nw')
       if linefound == 0
         if a:remove
-          :exec linenr . 'd _'
+          exec linenr . 'd _'
         else
           call add(s:matches_so_far, matchadd('unusedimport', line))
         endif
