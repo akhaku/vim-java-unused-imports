@@ -25,11 +25,11 @@ endif
 let s:matches_so_far = []
 
 function! s:highlight_unused_imports(remove)
-  let linenr = 0 
+  let linenr = 0
   :highlight unusedimport ctermbg=darkred guibg=darkred
-  while linenr < line("$") 
+  while linenr < line("$")
     let linenr += 1
-    let line = getline(linenr) 
+    let line = getline(linenr)
     let lis = matchlist(line, 'import \(\w\+\.\)\+\(\w\+\);')
     if len(lis) > 0
       let s = lis[2]
@@ -43,7 +43,7 @@ function! s:highlight_unused_imports(remove)
         endif
       endif
     endif
-  endwhile 
+  endwhile
 endfunction
 
 function! s:reset_unused_highlights()
