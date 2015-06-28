@@ -2,7 +2,7 @@
 " File:         unsued-imports.vim
 " Description:  vim script to highlight java unused imports
 " Maintainer:   Ammar Khaku <ammar.khaku at gmail dot com>
-" Last Change:  25 Jul, 2014
+" Last Change:  28 Jun, 2015
 " License:      This program is free software. It comes without any warranty,
 "               to the extent permitted by applicable law.
 " Installation: Install this file as plugin/unused-imports.vim
@@ -25,25 +25,26 @@ endif
 let s:matches_so_far = []
 
 function! s:highlight_unused_imports(remove)
-  let linenr = 0 
-  :highlight unusedimport ctermbg=darkred guibg=darkred
-  while linenr < line("$") 
+  call s:reset_unused_highlights()
+  let linenr = 0
+  highlight unusedimport ctermbg=darkred guibg=darkred
+  while linenr < line("$")
     let linenr += 1
-    let line = getline(linenr) 
-    let lis = matchlist(line, 'import \(\w\+\.\)\+\(\w\+\);')
+    let line = getline(linenr)
+    let lis = matchlist(line, '\v^\s*import\s+(\w+\.)+(\w+);')
     if len(lis) > 0
       let s = lis[2]
-      let searchStr = '\(\/\/.*\)\@<!\.\@<!\<' . s . '\>'
+      let searchStr = '\v(//.*)@<!(^\s*import\s+.*)@<!<' . s . '>'
       let linefound = search(searchStr, 'nw')
       if linefound == 0
         if a:remove
-          :exec linenr . 'd _'
+          exec linenr . 'd _'
         else
           call add(s:matches_so_far, matchadd('unusedimport', line))
         endif
       endif
     endif
-  endwhile 
+  endwhile
 endfunction
 
 function! s:reset_unused_highlights()
