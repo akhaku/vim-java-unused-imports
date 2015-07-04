@@ -37,7 +37,7 @@ function! s:highlight_unused_imports(remove)
   call cursor(1, 1)
   let classStartLine = search('\v(^\s*import\s+)@<!<class>')
 
-  while linenr < line("$")
+  while linenr < classStartLine
     let linenr += 1
     let line = getline(linenr)
     let lis = matchlist(line, '\v^\s*import\s+(\w+\.)+(\w+);')
