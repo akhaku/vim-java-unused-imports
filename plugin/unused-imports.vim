@@ -43,11 +43,11 @@ function! s:highlight_unused_imports(remove)
     let lis = matchlist(line, '\v^\s*import\s+(\w+\.)+(\w+);')
     if len(lis) > 0
       let s = lis[2]
-      let searchPattern = '\v(//.*)@<!(^\s*import\s+.*)@<!<' . s . '>'
+      let searchPattern = '\v(//.*)@<!<' . s . '>'
 
       " start searching from the class definition
       call cursor(classStartLine, 1)
-      let linefound = search(searchPattern, 'nw')
+      let linefound = search(searchPattern, 'nW')
 
       if linefound == 0
         if a:remove
