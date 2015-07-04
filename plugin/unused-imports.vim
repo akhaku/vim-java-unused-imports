@@ -26,16 +26,29 @@ let s:matches_so_far = []
 
 function! s:highlight_unused_imports(remove)
   call s:reset_unused_highlights()
-  let linenr = 0
   highlight unusedimport ctermbg=darkred guibg=darkred
-  while linenr < line("$")
+
+  " save current position to set it back later
+  let startLine = line(".")
+  let startCol = col(".")
+
+  let linenr = 0
+  " where does the class definition start (= where the imports end)
+  call cursor(1, 1)
+  let classStartLine = search('\v(^\s*import\s+)@<!<class>')
+
+  while linenr < classStartLine
     let linenr += 1
     let line = getline(linenr)
     let lis = matchlist(line, '\v^\s*import\s+(\w+\.)+(\w+);')
     if len(lis) > 0
       let s = lis[2]
-      let searchStr = '\v(//.*)@<!(^\s*import\s+.*)@<!<' . s . '>'
-      let linefound = search(searchStr, 'nw')
+      let searchPattern = '\v(//.*)@<!<' . s . '>'
+
+      " start searching from the class definition
+      call cursor(classStartLine, 1)
+      let linefound = search(searchPattern, 'nW')
+
       if linefound == 0
         if a:remove
           exec linenr . 'd _'
@@ -45,6 +58,9 @@ function! s:highlight_unused_imports(remove)
       endif
     endif
   endwhile
+
+  " set cursor back to initial position
+  call cursor(startLine, startCol)
 endfunction
 
 function! s:reset_unused_highlights()
