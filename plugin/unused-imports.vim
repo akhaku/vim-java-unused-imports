@@ -54,7 +54,7 @@ function! s:highlight_unused_imports(remove)
           exec linenr . 'd _'
           let classStartLine -= 1
         else
-          call add(s:matches_so_far, matchadd('unusedimport', line))
+          call add(s:matches_so_far, matchadd('unusedimport', '^' . line . '$'))
         endif
       endif
     endif
