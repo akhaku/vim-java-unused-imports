@@ -36,11 +36,15 @@ function! s:highlight_unused_imports(remove)
   " where does the class definition start (= where the imports end)
   call cursor(1, 1)
   let classStartLine = search('\v(^\s*import\s+)@<!(<fun>|<class>|<object>|<interface>|\@)')
-
   while linenr < classStartLine
     let linenr += 1
     let line = getline(linenr)
+    " assemble non static imports for removal
     let lis = matchlist(line, '\v^\s*import\s+(\w+\.)+(\w+);?')
+    if len(lis) == 0
+      " assemble static imports for removal
+      let lis = matchlist(line, '\v^\s*import static\s+(\w+\.)+(\w+);?')
+    endif
     if len(lis) > 0
       let s = lis[2]
       let searchPattern = '\v(//.*)@<!<' . s . '>'
