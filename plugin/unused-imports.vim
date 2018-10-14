@@ -1,6 +1,6 @@
 " ============================================================================
 " File:         unsued-imports.vim
-" Version:      1.0.0
+" Version:      1.1.0
 " Description:  vim script to highlight java unused imports
 " Maintainer:   Ammar Khaku
 " License:      This program is free software. It comes without any warranty,
