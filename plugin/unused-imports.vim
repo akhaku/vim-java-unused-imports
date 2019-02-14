@@ -40,10 +40,10 @@ function! s:highlight_unused_imports(remove)
     let linenr += 1
     let line = getline(linenr)
     " assemble non static imports for removal
-    let lis = matchlist(line, '\v^\s*import\s+(\w+\.)+(\w+);?')
+    let lis = matchlist(line, '\v^\s*import\s+(\w+\.)+([a-zA-Z0-9_]+)\s*;?\s*$')
     if len(lis) == 0
       " assemble static imports for removal
-      let lis = matchlist(line, '\v^\s*import static\s+(\w+\.)+(\w+);?')
+      let lis = matchlist(line, '\v^\s*import static\s+(\w+\.)+([a-zA-Z0-9_]+)\s*;?\s*$')
     endif
     if len(lis) > 0
       let s = lis[2]
