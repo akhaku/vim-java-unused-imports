@@ -1,5 +1,5 @@
 #Vim Java unused imports#
-v1.1.0
+v1.1.1
 Author: [akhaku](http://akhaku.com)
 
 A simple vim plugin to show unused imports in a java file. Built for purely
