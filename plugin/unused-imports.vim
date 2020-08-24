@@ -22,11 +22,11 @@ if v:version < 700
     finish
 endif
 
+highlight default unusedimport ctermbg=DarkRed guibg=DarkRed
 let s:matches_so_far = []
 
 function! s:highlight_unused_imports(remove)
   call s:reset_unused_highlights()
-  highlight unusedimport ctermbg=darkred guibg=darkred
 
   " save current position to set it back later
   let startLine = line(".")
