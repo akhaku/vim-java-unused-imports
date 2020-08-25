@@ -1,5 +1,6 @@
-#Vim Java unused imports#
-v1.1.1
+# Vim Java unused imports#
+
+v1.2.0
 Author: [akhaku](http://akhaku.com)
 
 A simple vim plugin to show unused imports in a java file. Built for purely
@@ -8,6 +9,7 @@ selfish reasons, open-sourced to help others.
 This is my first dabble im Vim scripting, so feedback is welcome.
 
 ## Usage ##
+
 This plugin works with [pathogen](https://github.com/tpope/vim-pathogen). Simply
 clone this repository to a subfolder within bundle/. Alternatively, copy 
 unused-imports.vim to plugin/
