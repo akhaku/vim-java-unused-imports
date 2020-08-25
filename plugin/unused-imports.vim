@@ -22,7 +22,7 @@ if v:version < 700
     finish
 endif
 
-highlight default unusedimport ctermbg=DarkRed guibg=DarkRed
+highlight default link unusedimport Error
 let s:matches_so_far = []
 
 function! s:highlight_unused_imports(remove)
